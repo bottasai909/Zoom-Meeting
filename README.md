@@ -106,7 +106,8 @@ The application is designed with a responsive interface inspired by Zoom's web e
 > Overview of the application after login showing quick meeting actions, scheduled meetings, and recent meetings.
 >
 > 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/56a4124e-1b62-4510-b351-a446b6531a07" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/83ff7231-f7b3-4576-b211-c58d12a4de44" />
+
 
 ---
 
@@ -114,7 +115,7 @@ The application is designed with a responsive interface inspired by Zoom's web e
 
 Shows instant meeting creation with automatically generated meeting ID.
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d503960b-a5b6-4cab-9ca2-e4ef92050f50" />
+
 
 ``
 
