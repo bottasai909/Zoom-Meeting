@@ -25,7 +25,7 @@ export default function Navbar() {
           <Video className="text-white" size={18} fill="white" />
         </div>
         <span className="text-lg font-bold text-white tracking-wider font-sans group-hover:text-zoom-blue transition-colors">
-          ZOOM<span className="text-zoom-blue font-light">CLONE</span>
+          ZOOM<span className="text-zoom-blue font-light">.</span>
         </span>
       </Link>
 
