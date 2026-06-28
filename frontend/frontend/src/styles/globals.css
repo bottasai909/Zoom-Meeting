@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-zoom-dark: #1a1a24;
+  --color-zoom-panel: #242433;
+  --color-zoom-button: #2f3042;
+  --color-zoom-blue: #0e71eb;
+  --color-zoom-blueHover: #0b5bbf;
+  --color-zoom-textMuted: #a1a1c2;
+}
+
+body {
+  background-color: #1a1a24;
+  color: #ffffff;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1a24;
+}
+::-webkit-scrollbar-thumb {
+  background: #2f3042;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0e71eb;
+}
