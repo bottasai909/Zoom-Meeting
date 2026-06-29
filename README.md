@@ -1,6 +1,6 @@
-# Zoom Clone - Full Stack Video Conferencing Platform
+# Zoom  - Full Stack Video Conferencing Platform
 
-A production-inspired full-stack video conferencing platform that recreates the core meeting workflow of Zoom Web. The application enables users to create instant meetings, schedule future meetings, join meetings using unique meeting IDs, manage participants, and communicate through an integrated meeting interface.
+A production  full-stack video conferencing platform that recreates the core meeting workflow of Zoom Web. The application enables users to create instant meetings, schedule future meetings, join meetings using unique meeting IDs, manage participants, and communicate through an integrated meeting interface.
 
 The project demonstrates modern full-stack architecture using **Next.js**, **FastAPI**, and **SQLite**, following a clean separation between frontend, backend, and persistence layers.
 
@@ -358,22 +358,26 @@ instead of local network IP addresses.
 # Future Enhancements
 
 * WebRTC peer-to-peer video streaming
-* Authentication and authorization
+  
 * Screen sharing
+
 * Meeting recording
+  
 * Waiting rooms
+  
 * Host controls
+  
 * File sharing
-* Live captions
+  
 * Notifications
+  
 * Email invitations
+ 
 * Calendar integration
-* PostgreSQL support
-* Docker deployment
-* CI/CD pipeline
+
 
 ---
 
 # Author
 
-Developed as a full-stack engineering project demonstrating modern frontend, backend, and database development practices using Next.js and FastAPI.
+The project uses Next.js for the frontend, FastAPI for the backend, and SQLite for storing meeting data.
