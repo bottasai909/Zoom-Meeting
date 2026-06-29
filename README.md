@@ -1,6 +1,6 @@
 # Zoom  - Full Stack Video Conferencing Platform
 
-A production  full-stack video conferencing platform that recreates the core meeting workflow of Zoom Web. The application enables users to create instant meetings, schedule future meetings, join meetings using unique meeting IDs, manage participants, and communicate through an integrated meeting interface.
+This is a Zoom-inspired video conferencing application built to learn full-stack development using Next.js and FastAPI. It allows users to create, schedule, join, and manage meetings through a REST API backed by SQLite. The project focuses on frontend-backend integration rather than real-time video streaming.
 
 The project demonstrates modern full-stack architecture using **Next.js**, **FastAPI**, and **SQLite**, following a clean separation between frontend, backend, and persistence layers.
 
