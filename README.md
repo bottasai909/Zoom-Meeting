@@ -1,118 +1,379 @@
-# Zoom Clone - Full-Stack Video Conferencing Platform
+# Zoom Clone - Full Stack Video Conferencing Platform
 
-A functional full-stack video conferencing web application clone of the Zoom web app. This application replicates Zoom’s design, user experience, and core meeting workflows, including creating, scheduling, and joining meetings.
+A production-inspired full-stack video conferencing platform that recreates the core meeting workflow of Zoom Web. The application enables users to create instant meetings, schedule future meetings, join meetings using unique meeting IDs, manage participants, and communicate through an integrated meeting interface.
 
----
-
-## 🚀 Features Implemented
-
-### 1. Landing Dashboard
-* **Zoom-inspired Dark Theme**: Built with custom HSL dark palettes matching Zoom’s modern web UI.
-* **Navigation & Sidebar**: Full navigation sidebar to toggle between pages.
-* **Quick Action Buttons**:
-  * **New Meeting**: Instantly launch a meeting room.
-  * **Join**: Enter a room using a Meeting ID.
-  * **Schedule**: Plan future meetings.
-* **Upcoming Scheduled Meetings**: Real-time list of upcoming sessions fetched from the database.
-* **Recent Meetings Section**: Display of past/completed meetings.
-
-### 2. Instant & Scheduled Meetings
-* **Auto-generated Meeting IDs**: Generates unique Zoom-like IDs (e.g., `abc-defg-hij`).
-* **Shareable Invite Links**: Copy one-click invite links directly from the meeting room or card.
-* **Detailed Scheduling**: Support for **Title**, **Description**, **Date & Time**, and **Duration** (15m to 2h).
-
-### 3. Interactive Meeting Room
-* **Media Stream Controls**: Toggle Microphone (mute/unmute) and Camera (on/off) states.
-* **Security & Fallbacks**: Graceful handling of browser camera permissions on non-localhost/insecure HTTP contexts.
-* **Real-time Chat**: In-meeting text chat drawer.
-* **Participants List**: Side panel showing active participants in the call.
+The project demonstrates modern full-stack architecture using **Next.js**, **FastAPI**, and **SQLite**, following a clean separation between frontend, backend, and persistence layers.
 
 ---
 
-## 🛠️ Tech Stack
+# Table of Contents
 
-* **Frontend**: Next.js (React 19, Pages Router), Tailwind CSS v4, Lucide React (Icons).
-* **Backend**: Python 3.12+, FastAPI (ASGI Framework).
-* **Database**: SQLite (SQLAlchemy ORM).
-
----
-
-## 🗄️ Database Design (SQLite)
-
-The database schema is designed using SQLAlchemy ORM for clean separation of concerns and type safety. 
-
-### `meetings` Table
-| Column Name | Type | Constraints | Description |
-|---|---|---|---|
-| `id` | Integer | Primary Key, Indexed | Auto-incrementing unique record ID |
-| `meeting_id` | String | Unique, Indexed | Human-readable Zoom-style ID (e.g. `abc-defg-hij`) |
-| `title` | String | Indexed, Required | Topic of the meeting |
-| `description` | String | Optional | Detailed description/agenda |
-| `start_time` | DateTime | Required | Scheduled starting date and time (UTC) |
-| `duration` | Integer | Default: 30 | Duration in minutes |
-| `type` | String | Required | Meeting type: `"instant"` or `"scheduled"` |
-| `host_name` | String | Default: `"Guest Host"` | Display name of the meeting host |
-| `is_active` | Boolean | Default: `True` | Lifecycle state of the meeting |
+* Overview
+* Features
+* Application Screenshots
+* System Architecture
+* Tech Stack
+* Database Design
+* Project Structure
+* Backend Setup
+* Frontend Setup
+* API Overview
+* Future Enhancements
 
 ---
 
-## 🏁 Getting Started
+# Overview
 
-### Prerequisites
-* **Node.js** (v18 or higher)
-* **Python** (v3.10 or higher)
+The application reproduces the essential workflow of modern video conferencing platforms.
 
----
+Users can:
 
-### 1. Backend Setup (FastAPI)
+* Create instant meetings
+* Schedule meetings
+* Join meetings using Meeting IDs
+* View upcoming meetings
+* Access meeting history
+* Share invitation links
+* Manage microphone and camera
+* Chat with participants
+* View active participants
 
-1. Navigate to the backend folder:
-   ```bash
-   cd backend
-   ```
-2. Create and activate a virtual environment:
-   ```bash
-   python -m venv venv
-   # On Windows (PowerShell):
-   .\venv\Scripts\activate
-   # On macOS/Linux:
-   source venv/bin/activate
-   ```
-3. Install dependencies:
-   ```bash
-   pip install fastapi uvicorn sqlalchemy pydantic
-   ```
-4. Seed the database with sample data:
-   ```bash
-   python -m app.seed.seed_data
-   ```
-5. Start the FastAPI server:
-   ```bash
-   python -m uvicorn app.main:app --reload
-   ```
-   * The API will be live at: `http://localhost:8000`
-   * Interactive Docs: `http://localhost:8000/docs`
+The application is designed with a responsive interface inspired by Zoom's web experience while maintaining a modular backend architecture.
 
 ---
 
-### 2. Frontend Setup (Next.js)
+# Features
 
-1. Open a new terminal and navigate to the frontend folder:
-   ```bash
-   cd frontend/frontend
-   ```
-2. Install Node packages:
-   ```bash
-   npm install
-   ```
-3. Start the Next.js development server:
-   ```bash
-   npm run dev
-   ```
-4. Open the application in your browser:
-   * **URL**: `http://localhost:3000`
+## Dashboard
+
+* Zoom-inspired dark interface
+* Responsive layout
+* Sidebar navigation
+* Meeting statistics
+* Upcoming meetings
+* Recent meetings
+* Quick action cards
 
 ---
 
-## 🔒 Security Note on Media Devices
-To test the webcam/mic controls inside the meeting room, please access the site via **`http://localhost:3000`**. Modern browsers restrict camera access (`getUserMedia`) to secure contexts (HTTPS or Localhost) and will block it on raw local network IP addresses (e.g., `http://10.x.x.x`).
+## Instant Meetings
+
+* One-click meeting creation
+* Automatically generated meeting IDs
+* Shareable meeting invitation links
+* Direct meeting room access
+
+---
+
+## Scheduled Meetings
+
+* Meeting title
+* Description
+* Date & Time selection
+* Duration selection
+* Upcoming meeting list
+* Meeting lifecycle management
+
+---
+
+## Meeting Room
+
+* Camera On / Off
+* Microphone Mute / Unmute
+* Participant sidebar
+* Live meeting chat
+* Meeting information panel
+* Invite link sharing
+
+---
+
+## User Experience
+
+* Responsive UI
+* Modern dark theme
+* Toast notifications
+* Loading states
+* Empty state handling
+* Error handling
+* Permission fallbacks for camera and microphone
+
+---
+
+# Application Screenshots
+
+## Landing Dashboard
+
+> Overview of the application after login showing quick meeting actions, scheduled meetings, and recent meetings.
+>
+> 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/83ff7231-f7b3-4576-b211-c58d12a4de44" />
+
+
+---
+
+## New Instant Meeting
+
+Shows instant meeting creation with automatically generated meeting ID.
+
+
+
+``
+
+## Schedule Meeting
+
+Meeting scheduling interface including title, description, date, time, and duration.
+
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/df2c41de-93f1-4eb3-9611-312a05b4e930" />
+
+
+## Upcoming Meetings
+
+Displays meetings retrieved from the backend database.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/99710f3a-4a71-4bf3-ad22-4d47f7a90bb8" />
+
+```
+
+---
+
+## Join Meeting
+
+Meeting join page using Meeting ID.
+
+```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/51cef609-74fb-4ca8-9df7-fe305d227367" />
+
+```
+
+---
+
+## Meeting Room
+
+Interactive meeting room with media controls.
+
+Visible features:
+
+* Camera Toggle
+* Microphone Toggle
+* Meeting Information
+* Invite Button
+* Active Participants
+
+```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cb86afe9-a7ae-4f11-a62d-07336d487e92" />
+
+```
+
+---
+
+## In-Meeting Chat
+
+Real-time chat drawer inside the meeting room.
+
+```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/42d4a9ee-2c85-4bf8-8bd1-7bb8ea551cb1" />
+
+```
+
+---
+
+## Participants Panel
+
+Displays active participants currently connected.
+
+```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9079b6be-7f6f-46ff-b82c-a532798d13ec" />
+
+```
+
+---
+
+# System Architecture
+
+```
+                    Next.js Frontend
+                          │
+               REST API (HTTP/JSON)
+                          │
+                    FastAPI Backend
+                          │
+                    SQLAlchemy ORM
+                          │
+                     SQLite Database
+```
+
+---
+
+# Technology Stack
+
+## Frontend
+
+* Next.js
+* React 19
+* Tailwind CSS v4
+* Lucide React
+* TypeScript
+
+## Backend
+
+* FastAPI
+* SQLAlchemy
+* Pydantic
+* Uvicorn
+
+## Database
+
+* SQLite
+
+---
+
+# Database Design
+
+## meetings
+
+| Field       | Type     | Description                  |
+| ----------- | -------- | ---------------------------- |
+| id          | Integer  | Primary Key                  |
+| meeting_id  | String   | Unique Zoom-style Meeting ID |
+| title       | String   | Meeting title                |
+| description | Text     | Meeting description          |
+| start_time  | DateTime | Scheduled meeting time       |
+| duration    | Integer  | Duration in minutes          |
+| type        | String   | Instant or Scheduled         |
+| host_name   | String   | Meeting host                 |
+| is_active   | Boolean  | Active status                |
+
+---
+
+# Project Structure
+
+```
+zoom-clone/
+
+│
+├── backend/
+│   ├── app/
+│   ├── database/
+│   ├── models/
+│   ├── routers/
+│   ├── schemas/
+│   ├── services/
+│   ├── seed/
+│   └── main.py
+│
+├── frontend/
+│   ├── pages/
+│   ├── components/
+│   ├── hooks/
+│   ├── styles/
+│   ├── public/
+│   └── package.json
+│
+├── screenshots/
+│
+└── README.md
+```
+
+---
+
+# Backend Setup
+
+```bash
+cd backend
+
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# Linux/macOS
+source venv/bin/activate
+
+pip install -r requirements.txt
+
+python -m app.seed.seed_data
+
+uvicorn app.main:app --reload
+```
+
+Backend
+
+```
+http://localhost:8000
+```
+
+Swagger
+
+```
+http://localhost:8000/docs
+```
+
+---
+
+# Frontend Setup
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+Application
+
+```
+http://localhost:3000
+```
+
+---
+
+# API Overview
+
+| Method | Endpoint       | Description        |
+| ------ | -------------- | ------------------ |
+| GET    | /meetings      | Fetch all meetings |
+| POST   | /meetings      | Create meeting     |
+| GET    | /meetings/{id} | Fetch meeting      |
+| PUT    | /meetings/{id} | Update meeting     |
+| DELETE | /meetings/{id} | Delete meeting     |
+
+---
+
+# Security
+
+Browser media devices require secure contexts.
+
+For camera and microphone functionality, run the frontend using:
+
+```
+http://localhost:3000
+```
+
+instead of local network IP addresses.
+
+---
+
+# Future Enhancements
+
+* WebRTC peer-to-peer video streaming
+* Authentication and authorization
+* Screen sharing
+* Meeting recording
+* Waiting rooms
+* Host controls
+* File sharing
+* Live captions
+* Notifications
+* Email invitations
+* Calendar integration
+* PostgreSQL support
+* Docker deployment
+* CI/CD pipeline
+
+---
+
+# Author
+
+Developed as a full-stack engineering project demonstrating modern frontend, backend, and database development practices using Next.js and FastAPI.
